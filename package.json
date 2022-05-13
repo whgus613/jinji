@@ -17,7 +17,11 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-dynamic-search-bar": "^2.0.2",
+    "react-native-elements": "^3.4.2",
+    "react-native-paper": "^4.12.1",
     "react-native-select-dropdown": "^1.13.0",
+    "react-native-shadow-2": "^6.0.5",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
