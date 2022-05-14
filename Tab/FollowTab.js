@@ -15,7 +15,10 @@ const FollowTab = () => {
         placeholder='ID, 닉네임, 태그 검색'
         onChangeText = {onChangeSearch}
         value = {searchQuery}
-        style = {{marginBottom: 30}}
+        style = {{
+          marginBottom: 30,
+          borderRadius: 20
+          }}
       />
 
       <View style={styles.profileView}>

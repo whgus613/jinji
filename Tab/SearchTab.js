@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SelectDropdown from 'react-native-select-dropdown';
@@ -163,7 +163,9 @@ const SearchTab = () => {
       <View style = {styles.line}></View>
       <View style = {styles.chevronView}>
         <Text style = {styles.title}>태그 검색</Text>
-        <Entypo name="chevron-small-right" size={24} color="gray" />
+        <TouchableOpacity>
+          <Entypo name="chevron-small-right" size={24} color="gray" />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -219,8 +221,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 40,
     backgroundColor: '#FFF',
-    borderRadius: 8,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     borderColor: '#444',
   },
   txtStyle: {

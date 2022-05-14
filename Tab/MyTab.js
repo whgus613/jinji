@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   profileView: {
     paddingVertical: 15,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignContent: 'center',
     flexDirection: 'row',
     borderBottomWidth: 2,
