@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
+import { useNavigation } from '@react-navigation/core';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SelectDropdown from 'react-native-select-dropdown';
 import { Entypo } from '@expo/vector-icons';
 
-const SearchTab = () => {
+const SearchTab = ({navigation}) => {
 
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
@@ -163,8 +164,9 @@ const SearchTab = () => {
       <View style = {styles.line}></View>
       <View style = {styles.chevronView}>
         <Text style = {styles.title}>태그 검색</Text>
-        <TouchableOpacity>
-          <Entypo name="chevron-small-right" size={24} color="gray" />
+        <TouchableOpacity
+          onPress={() => navigation.navigate("TagSearch")}>
+        <Entypo name="chevron-small-right" size={24} color="gray" />
         </TouchableOpacity>
       </View>
     </View>
@@ -205,7 +207,8 @@ const styles = StyleSheet.create({
   line: {
     backgroundColor: "#EFEFEF",
     height: 5,
-    marginVertical: 15
+    marginVertical: 15,
+    borderRadius: 10
   },
   viewContainer: {
     flex: 1, 
