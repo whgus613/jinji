@@ -33,7 +33,7 @@ const TopTab = ({route}) => {
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
-                        <FontAwesome name="search" size={24} color="red"/> ) : (
+                        <FontAwesome name="search" size={24} color="#C7382A"/> ) : (
                         <FontAwesome name="search" size={24} color="gray"/>)
                 }}
             />
@@ -43,7 +43,7 @@ const TopTab = ({route}) => {
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
-                        <MaterialCommunityIcons name="message-settings-outline" size={24} color="red" /> ) : (
+                        <MaterialCommunityIcons name="message-settings-outline" size={24} color="#C7382A" /> ) : (
                         <MaterialCommunityIcons name="message-settings-outline" size={24} color="gray" />)
                 }}
             />
@@ -53,7 +53,7 @@ const TopTab = ({route}) => {
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
-                        <Octicons name="home" size={24} color="red" /> ) : (
+                        <Octicons name="home" size={24} color="#C7382A" /> ) : (
                         <Octicons name="home" size={24} color="gray" />)
                 }}
             />
@@ -63,7 +63,7 @@ const TopTab = ({route}) => {
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
-                        <Feather name="heart" size={24} color="red" /> ) : (
+                        <Feather name="heart" size={24} color="#C7382A" /> ) : (
                         <Feather name="heart" size={24} color="gray" />)
                 }}
             />
@@ -73,7 +73,7 @@ const TopTab = ({route}) => {
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
-                        <AntDesign name="user" size={24} color="red" /> ) : (
+                        <AntDesign name="user" size={24} color="#C7382A" /> ) : (
                         <AntDesign name="user" size={24} color="gray" />)
                 }}
             />

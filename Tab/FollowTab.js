@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect, useRef} from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { Shadow } from 'react-native-shadow-2';
 
 const FollowTab = () => {
 
