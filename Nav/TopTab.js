@@ -25,8 +25,9 @@ const TopTab = ({route}) => {
                 swipeEnabled: false,
                 tabBarIndicatorStyle: {
                     backgroundColor: "white"
-                }
-            }}>
+                },
+            }}
+            >
             <Tab.Screen
                 name = "검색"
                 component={SearchTab}

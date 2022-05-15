@@ -1,9 +1,10 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect, useRef} from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-const FollowTab = () => {
+const FollowTab = ({navigation}) => {
 
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
@@ -28,7 +29,10 @@ const FollowTab = () => {
             style={styles.imageStyle}></Image>
         </View>
         <View style={styles.textView}>
-          <Text style={styles.profileTxt}>쩝쩝박사</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("DetailFollow")}>
+            <Text style={styles.profileTxt}>쩝쩝박사</Text>
+          </TouchableOpacity>
           <View style={styles.line}></View>
           <View style={styles.tagView}>
             <View style={styles.tag}>
