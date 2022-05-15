@@ -1,7 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
-import { useNavigation } from '@react-navigation/core';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SelectDropdown from 'react-native-select-dropdown';
 import { Entypo } from '@expo/vector-icons';
 
@@ -106,7 +104,7 @@ const SearchTab = ({navigation}) => {
         buttonStyle={styles.dropdownBtnStyle}
         buttonTextStyle={styles.txtStyle}
         renderDropdownIcon={isOpened => {
-          return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#444'} size={18} />;
+          return <Entypo name={isOpened ? 'triangle-up' : 'triangle-down'} color={'#444'} size={18} />;
         }}
         dropdownIconPosition={'right'}
         dropdownStyle={styles.dropdownDropdownStyle}
@@ -131,7 +129,7 @@ const SearchTab = ({navigation}) => {
         buttonStyle={styles.dropdownBtnStyle}
         buttonTextStyle={styles.txtStyle}
         renderDropdownIcon={isOpened => {
-          return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#444'} size={18} />;
+          return <Entypo name={isOpened ? 'triangle-up' : 'triangle-down'} color={'#444'} size={18} />;
         }}
         dropdownIconPosition={'right'}
         dropdownStyle={styles.dropdownDropdownStyle}
@@ -154,7 +152,7 @@ const SearchTab = ({navigation}) => {
         buttonStyle={styles.dropdownBtnStyle}
         buttonTextStyle={styles.txtStyle}
         renderDropdownIcon={isOpened => {
-          return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#444'} size={18} />;
+          return <Entypo name={isOpened ? 'triangle-up' : 'triangle-down'} color={'#444'} size={18} />;
         }}
         dropdownIconPosition={'right'}
         dropdownStyle={styles.dropdownDropdownStyle}
