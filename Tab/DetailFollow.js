@@ -10,8 +10,13 @@ const DetailFollow = () => {
             source={require("../sampleImg/프로필.jpg")}
             style={styles.imageStyle}></Image>
         </View>
+        <View style={styles.followView}>
         <View style={styles.textView}>
             <Text style={styles.profileTxt}>쩝쩝박사</Text>
+            <View style={styles.followTag}>
+              <Text style={styles.followTxt}>팔로우</Text>
+            </View>
+        </View>
           <View style={styles.line}></View>
           <View style={styles.tagView}>
             <View style={styles.tag}>
@@ -22,13 +27,9 @@ const DetailFollow = () => {
             </View>
           </View>
           <Text style={styles.word}>숨은 맛집 찾아다녀요~!</Text>
-          <View style={styles.followView}>
-            <View style={styles.followTag}>
-              <Text style={styles.followTxt}>팔로우</Text>
-            </View>
-          </View>
+          
         </View>
-    </View>
+      </View>
     <ScrollView>
 
     </ScrollView>
@@ -62,8 +63,14 @@ const styles = StyleSheet.create({
         borderColor: "black",
         borderWidth: 0.5
       },
+      followView: {
+        width: '60%',
+        marginBottom: 10
+      },
       textView: {
-        width: '60%'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: -5
       },
       profileTxt: {
         fontSize: 17
@@ -95,10 +102,6 @@ const styles = StyleSheet.create({
       word: {
         fontSize: 15
       },
-      followView: {
-        flexDirection: "row-reverse",
-        marginTop: 5
-      },
       followTag: {
         paddingHorizontal: 10,
         backgroundColor: "#69B1DA",
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
       followTxt: {
         color: "white"
       },
-
+      
 });
 
 export default DetailFollow;
