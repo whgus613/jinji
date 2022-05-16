@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TopTab from "./TopTab";
 import TagSearch from "../Tab/TagSearch";
 import DetailFollow from "../Tab/DetailFollow";
+import DetailStore from "../Tab/DetailStore";
 
 const ns = createNativeStackNavigator();
 
@@ -22,6 +23,11 @@ const Stack = () => {
             <ns.Screen
                 name = "DetailFollow"
                 component={DetailFollow}  
+                options={{headerTitleStyle: {color: "#FFF"}}}  
+            ></ns.Screen>  
+            <ns.Screen
+                name = "DetailStore"
+                component={DetailStore}  
                 options={{headerTitleStyle: {color: "#FFF"}}}  
             ></ns.Screen>  
         </ns.Navigator>

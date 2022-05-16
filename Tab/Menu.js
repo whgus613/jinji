@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const Menu = () => {
+const Menu = ({navigation}) => {
   return (
     <View style={styles.container}>
 
@@ -18,7 +18,10 @@ const Menu = () => {
             style={styles.imageStyle}></Image>
         </View>
         <View style={styles.txtView}>
-          <Text style={styles.nameTxt}>새벽</Text>
+          <TouchableOpacity
+            onPress={ () => navigation.navigate("DetailStore")}>
+            <Text style={styles.nameTxt}>새벽</Text>
+          </TouchableOpacity>
           <Text style={styles.stateTxt}>영업중</Text>
           <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
           <View style={styles.gapView}></View>
