@@ -21,7 +21,6 @@
     "react-native": "0.64.3",
     "react-native-dynamic-search-bar": "^2.0.2",
     "react-native-elements": "^3.4.2",
-    "react-native-gesture-handler": "^2.4.2",
     "react-native-maps": "^0.31.1",
     "react-native-paper": "^4.12.1",
     "react-native-select-dropdown": "^1.13.0",

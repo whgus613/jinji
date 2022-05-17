@@ -1,11 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
+import react, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const Menu = ({navigation}) => {
+
+  const [toggle, setToggle] = useState(true);
+  const toggleFunction = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <View style={styles.container}>
-
       <View style={styles.titleView}>
         <Text style={styles.titleTxt}>양식</Text>
       </View>
@@ -19,13 +27,13 @@ const Menu = ({navigation}) => {
         </View>
         <View style={styles.txtView}>
           <TouchableOpacity
-            onPress={ () => navigation.navigate("DetailStore")}>
-            <Text style={styles.nameTxt}>새벽</Text>
+            onPress={() => navigation.navigate("DetailStore")}>
+              <Text style={styles.nameTxt}>새벽</Text>
           </TouchableOpacity>
           <Text style={styles.stateTxt}>영업중</Text>
           <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
           <View style={styles.gapView}></View>
-          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 24</Text>
+          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 22</Text>
           <Text style={styles.etcTxt}>064-1234-5678</Text>
         </View>
       </View>
@@ -42,11 +50,56 @@ const Menu = ({navigation}) => {
           <Text style={styles.stateTxt}>영업중</Text>
           <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
           <View style={styles.gapView}></View>
-          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 24</Text>
+          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 22</Text>
           <Text style={styles.etcTxt}>064-1234-5678</Text>
         </View>
       </View>
-      <AntDesign name="pluscircle" size={40} color="#DA7469" style={{position: 'absolute', left: '90%', bottom: '5%'}} />
+
+      <View style={styles.storeView}>
+        <View style={styles.imageView}>
+          <Image
+            resizeMode={"cover"}
+            source={require("../sampleImg/새벽.jpg")}
+            style={styles.imageStyle}></Image>
+        </View>
+        <View style={styles.txtView}>
+          <Text style={styles.nameTxt}>새벽</Text>
+          <Text style={styles.stateTxt}>영업중</Text>
+          <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
+          <View style={styles.gapView}></View>
+          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 22</Text>
+          <Text style={styles.etcTxt}>064-1234-5678</Text>
+        </View>
+      </View>
+
+
+      <View style={styles.buttonView}>
+        <TouchableOpacity onPress={() => toggleFunction()}>
+          {toggle ? (
+            <AntDesign name="pluscircle" size={45} color="#DA7469" style={styles.button1}/>
+          ) : (
+            <View style={styles.writeView}>
+              <View style={styles.selectView}>
+                <TouchableOpacity onPress={() => navigation.navigate("VisitReview")}>
+                  <View style={{flexDirection: 'row'}}>
+                  <Feather name="check" size={22} color="gray" style={{marginRight: 15}} />
+                  <Text style={styles.selectTxt}>방문한 곳 등록</Text>
+                  </View>
+                </TouchableOpacity>
+                
+                <View style={styles.line2}></View>
+                <TouchableOpacity onPress={() => navigation.navigate("NotVisitReview")}>
+                  <View style={{flexDirection: 'row'}}>
+                  <AntDesign name="hearto" size={22} color="gray" style={{marginRight: 15}} />
+                  <Text style={styles.selectTxt}>가고 싶은 곳 등록</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <Entypo name="circle-with-cross" size={50} color="#DA7469" style={styles.button2}/>
+            </View>
+          )}
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -56,7 +109,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 20,
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    zIndex: 1
   },
   titleView: {
   },
@@ -98,7 +152,43 @@ const styles = StyleSheet.create({
   },
   gapView: {
     height: 20
-  }
+  },
+  buttonView: {
+    position: 'absolute',
+    bottom: '5%',
+    right: '2%',  
+  },
+  button1: {  
+    
+  },
+  button2: {
+    position: 'absolute',
+    right: -5,
+    bottom: -10,
+    marginBottom: 5
+  },
+  writeView: {
+    flexDirection: 'row',
+    width: 250,
+    height: 80,
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    paddingHorizontal: 20,
+    borderRadius: 20,
+  },
+  selectView: {
+    flexDirection: 'column',
+    justifyContent: 'center'
+  },
+  selectTxt: {
+    fontSize: 16,
+  },
+  line2: {
+    height: 2,
+    backgroundColor: '#C3C3C3',
+    marginVertical: 5,
+    width: 170
+  },
 });
 
 export default Menu;

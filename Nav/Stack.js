@@ -4,6 +4,8 @@ import TopTab from "./TopTab";
 import TagSearch from "../Tab/TagSearch";
 import DetailFollow from "../Tab/DetailFollow";
 import DetailStore from "../Tab/DetailStore";
+import VisitReview from "../Tab/VisitReview";
+import NotVisitReview from "../Tab/NotVisitReview";
 
 const ns = createNativeStackNavigator();
 
@@ -30,6 +32,16 @@ const Stack = () => {
                 component={DetailStore}  
                 options={{headerTitleStyle: {color: "#FFF"}}}  
             ></ns.Screen>  
+            <ns.Screen
+                name = "NotVisitReview"
+                component={NotVisitReview}  
+                options={{headerTitleStyle: {color: "#FFF"}}}  
+            ></ns.Screen> 
+            <ns.Screen
+                name = "VisitReview"
+                component={VisitReview}  
+                options={{headerTitleStyle: {color: "#FFF"}}}  
+            ></ns.Screen> 
         </ns.Navigator>
     )
 }
