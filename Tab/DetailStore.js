@@ -71,7 +71,7 @@ const DetailStore = () => {
           </View>
           <View style={styles.userNameView}>
             <Text style={styles.userName}>쩝쩝박사</Text>
-            <Text style={styles.userTxt}>다른 곳보다 육수가 진함.{"\n"}꿔바로우가 바삭하고 매우 맛있음!</Text>
+            <Text style={styles.userTxt}>브런치로 먹기에 양과 가격 다 적당함!</Text>
           </View>
         </View>
         <View style={styles.line}></View>
@@ -84,8 +84,8 @@ const DetailStore = () => {
               style={styles.userImageStyle}></Image>
           </View>
           <View style={styles.userNameView}>
-            <Text style={styles.userName}>쩝쩝박사</Text>
-            <Text style={styles.userTxt}>정문이랑 비교했을 때 육수에서 땅콩 소스 향이 더 강하게 남.</Text>
+            <Text style={styles.userName}>맛나맛나</Text>
+            <Text style={styles.userTxt}>매장이 예쁘고 분위기도 좋아서 친구랑 가기 좋을 듯.</Text>
           </View>
         </View>
         <View style={styles.line}></View>
@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
     height: 220
   },
   titleView: {
-    marginVertical: 30
+    marginTop: 30,
+    marginBottom: 20
   },
   title: {
     fontSize: 23
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
   starpointView: {
     flexDirection: 'row',
     width: '100%',
-    marginLeft: 40
+    marginLeft: 40,
   },
   starView: {
     flexDirection: 'row',
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     width: '100%',
     marginLeft: 40,
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   tag: {
     paddingHorizontal: 10,
@@ -177,7 +178,6 @@ const styles = StyleSheet.create({
     height: 27,
     borderRadius: 20,
     justifyContent: 'center',
-    marginBottom: 10
   },
   tagTxt: {
     fontSize: 14,

@@ -1,7 +1,14 @@
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 const DetailFollow = () => {
+
+  const [toggle, setToggle] = useState(true);
+  const toggleFunction = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.profileView}>
@@ -44,7 +51,17 @@ const DetailFollow = () => {
           <View style={styles.storeTxtView}>
           <View style={styles.storeTitleView}>
             <Text style={styles.storeTitle}>백일흑야</Text>
-            <AntDesign name="hearto" size={24} color="#C7382A" />
+            <TouchableOpacity onPress={() => toggleFunction()}>
+                {toggle ? (
+                    <View style={{marginRight: 11}}>
+                        <AntDesign name="hearto" size={24} color="#C7382A" />
+                    </View>
+                ) : (
+                    <View style={{marginRight:11}}>
+                        <AntDesign name="heart" size={24} color="#C7382A" />
+                    </View>
+                )}
+            </TouchableOpacity>
           </View>
           <View style={styles.storeTagView}>
             <View style={styles.storeTag}>

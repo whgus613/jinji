@@ -16,7 +16,8 @@ const ListTab = () => {
           tabBarIndicatorStyle:
           {
              backgroundColor: '#C3C3C3' 
-             }}}>
+          }
+            }}>
         <semiTab.Screen name="가본 곳" component = {Visit}></semiTab.Screen>
         <semiTab.Screen name="가고싶은 곳" component={NotVisit}></semiTab.Screen>
       </semiTab.Navigator>
