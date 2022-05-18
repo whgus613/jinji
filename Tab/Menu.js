@@ -80,7 +80,7 @@ const Menu = ({navigation}) => {
           ) : (
             <View style={styles.writeView}>
               <View style={styles.selectView}>
-                <TouchableOpacity onPress={() => navigation.navigate("VisitReview")}>
+                <TouchableOpacity onPress={() => navigation.navigate("식당 리뷰하기")}>
                   <View style={{flexDirection: 'row'}}>
                   <Feather name="check" size={22} color="gray" style={{marginRight: 15}} />
                   <Text style={styles.selectTxt}>방문한 곳 등록</Text>
@@ -88,7 +88,7 @@ const Menu = ({navigation}) => {
                 </TouchableOpacity>
                 
                 <View style={styles.line2}></View>
-                <TouchableOpacity onPress={() => navigation.navigate("NotVisitReview")}>
+                <TouchableOpacity onPress={() => navigation.navigate("식당 등록하기")}>
                   <View style={{flexDirection: 'row'}}>
                   <AntDesign name="hearto" size={22} color="gray" style={{marginRight: 15}} />
                   <Text style={styles.selectTxt}>가고 싶은 곳 등록</Text>
