@@ -10,6 +10,17 @@ const HomeTab = () => {
 
   return (
     <View>
+    <Searchbar
+        placeholder='식당명 검색'
+        onChangeText = {onChangeSearch}
+        value = {searchQuery}
+        style = {{
+          position: 'absolute',
+          top: '8%',
+          marginHorizontal: 30,
+          borderRadius: 20
+          }}
+      />
     <MapView
       style={styles.map}
       provide={PROVIDER_GOOGLE}
@@ -18,9 +29,8 @@ const HomeTab = () => {
         longitude: 126.56190413060305,
         latitudeDelta: 0.005,
         longitudeDelta: 0.005
-      }}>
+      }} />
       
-    </MapView>
     </View>
   );
 }
@@ -31,7 +41,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   map: {
-    height: "100%"
+    height: "100%",
+    zIndex: 10
   },
   searchStyle:{
     position: 'absolute'
