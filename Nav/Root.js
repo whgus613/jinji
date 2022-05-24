@@ -7,7 +7,9 @@ const Nav = createNativeStackNavigator();
 
 const Root = () => {
     return (
-        <Nav.Navigator screenOptions={{ headerShown: false }}>
+        <Nav.Navigator screenOptions={{ 
+            headerShown: false,
+            }}>
             <Nav.Screen name="Stack" component={Stack}></Nav.Screen>
             <Nav.Screen name="TopTab" component={TopTab}></Nav.Screen>
         </Nav.Navigator>

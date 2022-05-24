@@ -25,7 +25,7 @@ const TopTab = ({route}) => {
                 swipeEnabled: false,
                 tabBarIndicatorStyle: {
                     backgroundColor: "white"
-                },
+                }
             }}
             >
             <Tab.Screen

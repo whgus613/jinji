@@ -5,31 +5,34 @@ import { Searchbar } from 'react-native-paper';
 
 const HomeTab = () => {
 
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
   return (
     <View>
-    <Searchbar
+      <Searchbar
         placeholder='식당명 검색'
         onChangeText = {onChangeSearch}
         value = {searchQuery}
         style = {{
-          position: 'absolute',
-          top: '8%',
+          borderRadius: 20,
           marginHorizontal: 30,
-          borderRadius: 20
-          }}
+          marginTop: 60,
+          width: 350,
+          zIndex: 10,
+          position: 'absolute'
+        }}
       />
-    <MapView
-      style={styles.map}
-      provide={PROVIDER_GOOGLE}
-      region={{
-        latitude: 33.45594224084678,
-        longitude: 126.56190413060305,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005
-      }} />
+      <MapView
+        style={styles.map}
+        provide={PROVIDER_GOOGLE}
+        region={{
+          latitude: 33.45594224084678,
+          longitude: 126.56190413060305,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005
+        }} />
+    
       
     </View>
   );
@@ -42,11 +45,7 @@ const styles = StyleSheet.create({
   },
   map: {
     height: "100%",
-    zIndex: 10
   },
-  searchStyle:{
-    position: 'absolute'
-  }
 });
 
 export default HomeTab;
