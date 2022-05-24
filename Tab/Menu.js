@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import react, {useState} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import react, {useState, useEffect} from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
@@ -12,65 +12,85 @@ const Menu = ({navigation}) => {
     setToggle(!toggle);
   };
 
-  return (
-    <View style={styles.container}>
+  
+  const [loading, setLoading] = useState(true);
+  const [wholeData, setWholeData] = useState([]);
+
+    let contents = [];
+
+    const getContents = async () => {
+        const results = await(await fetch("http://203.253.207.111:8080/jsmith/restful/content?type=1&page=1&ccd=B2")).json();
+        
+        const preData = results.filter((data) => {
+            const code = data.hcnt_sub_img;
+            return code !== ""; 
+        });
+
+        for (let i=0; i<preData.length; i++){
+            contents[i]=preData[i]; 
+            contents[i].ccnt_m_img = contents[i].ccnt_m_img.split(",");
+            contents[i].ccnt_addr = contents[i].ccnt_addr.substr(8);
+        }
+
+        setWholeData(contents);
+        setLoading(false);
+    };
+    useEffect(()=> {
+        getContents();
+    }, []);
+
+
+
+  return loading ? (
+  
+  <View
+    style={{
+      flex: 1,
+      justifyContent: 'center',
+      alignContent: 'center',
+    }}>
+      <Text></Text>
+  </View>
+  
+  ) : (
+    <View style = {styles.container}>
+      <ScrollView>
+
       <View style={styles.titleView}>
         <Text style={styles.titleTxt}>양식</Text>
       </View>
       <View style={styles.line}></View>
-      <View style={styles.storeView}>
-        <View style={styles.imageView}>
-          <Image
-            resizeMode={"cover"}
-            source={require("../sampleImg/새벽.jpg")}
-            style={styles.imageStyle}></Image>
-        </View>
-        <View style={styles.txtView}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("DetailStore")}>
-              <Text style={styles.nameTxt}>새벽</Text>
+
+      <View>
+        
+        {wholeData.map((image)=>{
+          return(
+            <TouchableOpacity  key={image.ROWNUM}>
+            <View style={styles.storeView}>
+              <View style={styles.imageView}>
+              <Image
+                  resizeMode={"cover"}
+                  source={{
+                    uri: `http://203.253.207.111:8080/jsmith_image${image.ccnt_m_img[0]}`
+                  }}
+                  style={styles.imageStyle}></Image>
+              </View>
+              <View style={styles.txtView}>
+                <Text style={styles.nameTxt}>{image.ccnt_name}</Text>
+                <Text style={styles.etcTxt}>{image.ccnt_op_time}</Text>
+                <View style={styles.gapView}></View>
+                <Text style={styles.etcTxt}>{image.ccnt_addr}</Text>
+                <Text style={styles.etcTxt}>{image.ccnt_tel}</Text>
+              </View>
+            </View>
           </TouchableOpacity>
-          <Text style={styles.stateTxt}>영업중</Text>
-          <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
-          <View style={styles.gapView}></View>
-          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 22</Text>
-          <Text style={styles.etcTxt}>064-1234-5678</Text>
-        </View>
+          );
+        })}
+
       </View>
 
-      <View style={styles.storeView}>
-        <View style={styles.imageView}>
-          <Image
-            resizeMode={"cover"}
-            source={require("../sampleImg/새벽.jpg")}
-            style={styles.imageStyle}></Image>
-        </View>
-        <View style={styles.txtView}>
-          <Text style={styles.nameTxt}>새벽</Text>
-          <Text style={styles.stateTxt}>영업중</Text>
-          <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
-          <View style={styles.gapView}></View>
-          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 22</Text>
-          <Text style={styles.etcTxt}>064-1234-5678</Text>
-        </View>
-      </View>
+      </ScrollView>
 
-      <View style={styles.storeView}>
-        <View style={styles.imageView}>
-          <Image
-            resizeMode={"cover"}
-            source={require("../sampleImg/새벽.jpg")}
-            style={styles.imageStyle}></Image>
-        </View>
-        <View style={styles.txtView}>
-          <Text style={styles.nameTxt}>새벽</Text>
-          <Text style={styles.stateTxt}>영업중</Text>
-          <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
-          <View style={styles.gapView}></View>
-          <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 22</Text>
-          <Text style={styles.etcTxt}>064-1234-5678</Text>
-        </View>
-      </View>
 
 
       <View style={styles.buttonView}>

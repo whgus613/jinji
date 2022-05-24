@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useMemo, useRef} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import { Searchbar } from 'react-native-paper';
+import BottomDrawer from 'rn-bottom-drawer'
 
 const HomeTab = () => {
 
@@ -32,7 +33,6 @@ const HomeTab = () => {
           latitudeDelta: 0.005,
           longitudeDelta: 0.005
         }} />
-    
       
     </View>
   );

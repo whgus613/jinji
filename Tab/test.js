@@ -13,7 +13,7 @@ const test = () => {
     let contents = [];
 
     const getContents = async () => {
-        const results = await(await fetch("http://203.253.207.111:8080/jsmith/restful/content?type=1&page=1&ccd=B1")).json();
+        const results = await(await fetch("http://203.253.207.111:8080/jsmith/restful/content?type=1&page=1&ccd=B2")).json();
         
         const preData = results.filter((data) => {
             const code = data.hcnt_sub_img;
