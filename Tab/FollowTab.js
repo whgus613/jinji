@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect, useRef} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
 const FollowTab = ({navigation}) => {
@@ -20,7 +20,7 @@ const FollowTab = ({navigation}) => {
           borderRadius: 20
           }}
       />
-
+    <ScrollView>
       <View style={styles.profileView}>
         <View style={styles.imageView}>
           <Image
@@ -77,6 +77,35 @@ const FollowTab = ({navigation}) => {
           </View>
         </View>
       </View>
+
+      <View style={styles.profileView}>
+        <View style={styles.imageView}>
+          <Image
+            resizeMode={"cover"}
+            source={require("../sampleImg/프로필3.jpg")}
+            style={styles.imageStyle}></Image>
+        </View>
+        <View style={styles.textView}>
+          <Text style={styles.profileTxt}>구맛집전문가</Text>
+          <View style={styles.line}></View>
+          <View style={styles.tagView}>
+            <View style={styles.tag}>
+              <Text style={styles.tagTxt}>#친구</Text>
+            </View>
+            <View style={styles.tag}>
+              <Text style={styles.tagTxt}>#맛집</Text>
+            </View>
+          </View>
+          <Text style={styles.word}>여기가 내 나와바리</Text>
+          <View style={styles.followView}>
+            <View style={styles.followTag}>
+              <Text style={styles.followTxt}>팔로우</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
+      </ScrollView>
 
     </View>
   );
