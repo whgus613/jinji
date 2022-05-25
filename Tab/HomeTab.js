@@ -3,8 +3,11 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import { Searchbar } from 'react-native-paper';
 import * as Location from 'expo-location';
+import axios from 'axios';
 
 const HomeTab = () => {
+
+  const API_KEY = "973bdd1aec62cd3610061187b566f900";
 
   const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = query => setSearchQuery(query);
@@ -20,26 +23,30 @@ const HomeTab = () => {
     if (!granted) {
       setLoading(false);
     }
-    // 위치 1~6단계 존재
-    // 도시명과 구역 city, distrinct
-    const {
-      coords: { latitude, longitude },
-    } = await Location.getCurrentPositionAsync({ accuracy: 5 });
     
-    setLocation(await Location.reverseGeocodeAsync(
-      { latitude, longitude },
-      { useGoogleMaps: false }
-    ));
+    const location = await Location.getCurrentPositionAsync({})
 
-    setLatitude(latitude)
-    setLongitude(longitude)
-    setCity(location[0].street)
+    setLocation(location);
+
+    const place = await Location.reverseGeocodeAsync({
+      latitude: location.coords.latitude,
+      longitude : location.coords.longitude
+    });
+
+    let city;
+    place.find ( p => {
+      street = p.street
+      setCity(p.street)
+    })
+
+    setLatitude(location.coords.latitude);
+    setLongitude(location.coords.longitude);
     
     return setLoading(false);
   };
 
   useEffect(() => {
-    getLocation()
+    getLocation();
   }, []);
 
   return loading ? (
