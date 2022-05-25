@@ -17,6 +17,7 @@ const HomeTab = () => {
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState();
   const [city, setCity] = useState("");
+  const [weather, setWeather] = useState();
 
   const getLocation = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
@@ -33,17 +34,33 @@ const HomeTab = () => {
       longitude : location.coords.longitude
     });
 
-    let city;
     place.find ( p => {
       street = p.street
       setCity(p.street)
     })
 
-    setLatitude(location.coords.latitude);
-    setLongitude(location.coords.longitude);
+    const {
+      coords: { latitude, longitude },
+    } = await Location.getCurrentPositionAsync({ accuracy: 5 });
     
+    setLatitude(latitude);
+    setLongitude(longitude);
+    
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=alerts&appid=${API_KEY}`
+    )
+
+    const json = await response.json();
+
+    //console.log(json);
+
+    setWeather(json);
+
+    //console.log(weather);
+
     return setLoading(false);
   };
+
 
   useEffect(() => {
     getLocation();
@@ -85,8 +102,8 @@ const HomeTab = () => {
       <View style = {styles.weatherView}>
         <Text style = {styles.etcTxt}>오늘의 추천</Text>
         <View style = {styles.line} />
-        <View style ={{flexDirection: 'row'}}>
-
+        <View style ={styles.localView}>
+          <Text style = {styles.etcTxt}>{weather.current.temp}°C</Text>
           <Text style = {styles.etcTxt}>{city}</Text>
         </View>
       </View>
@@ -124,6 +141,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     height: 1,
     marginVertical: 10
+  },
+  localView: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
 
