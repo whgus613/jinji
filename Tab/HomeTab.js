@@ -12,22 +12,34 @@ const HomeTab = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [location, setLocation] = useState();
+  const [city, setCity] = useState("");
+
+  const getLocation = async () => {
+    const { granted } = await Location.requestForegroundPermissionsAsync();
+    if (!granted) {
+      setLoading(false);
+    }
+    // 위치 1~6단계 존재
+    // 도시명과 구역 city, distrinct
+    const {
+      coords: { latitude, longitude },
+    } = await Location.getCurrentPositionAsync({ accuracy: 5 });
+    
+    setLocation(await Location.reverseGeocodeAsync(
+      { latitude, longitude },
+      { useGoogleMaps: false }
+    ));
+
+    setLatitude(latitude)
+    setLongitude(longitude)
+    setCity(location[0].street)
+    
+    return setLoading(false);
+  };
 
   useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-      const {coords:{latitude,longitude}} = await Location.getCurrentPositionAsync();
-      
-      setLatitude(latitude);
-      setLongitude(longitude);
-      setLoading(false);
-
-    })();
-
+    getLocation()
   }, []);
 
   return loading ? (
@@ -66,6 +78,10 @@ const HomeTab = () => {
       <View style = {styles.weatherView}>
         <Text style = {styles.etcTxt}>오늘의 추천</Text>
         <View style = {styles.line} />
+        <View style ={{flexDirection: 'row'}}>
+
+          <Text style = {styles.etcTxt}>{city}</Text>
+        </View>
       </View>
     </View>
   );
