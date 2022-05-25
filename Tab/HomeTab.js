@@ -3,7 +3,21 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import { Searchbar } from 'react-native-paper';
 import * as Location from 'expo-location';
-import axios from 'axios';
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
+const weatherIcon = [
+  "white-balance-sunny",
+  "weather-cloudy",
+  "weather-rainy",
+  "weather-snowy",
+  "weather-lightning",
+  "weatehr-fog"
+];
+let iconName;
+let dayName;
+
+
+
 
 const HomeTab = () => {
 
@@ -17,7 +31,24 @@ const HomeTab = () => {
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState();
   const [city, setCity] = useState("");
-  const [weather, setWeather] = useState();
+  const [tw, setTw] = useState();
+  const [rw, setRw] = useState();
+
+  const getIconName = (code) => {
+    if (code === "Clear") {
+        return weatherIcon[0];
+    } else if (code === "Clouds") {
+        return weatherIcon[1];
+    } else if (code === "Rain") {
+        return weatherIcon[2];
+    } else if (code === "Snow") {
+        return weatherIcon[3];
+    } else if (code === "Thunderstorm") {
+        return weatherIcon[4];
+    } else {
+        return weatherIcon[5];
+    }
+}; 
 
   const getLocation = async () => {
     const { granted } = await Location.requestForegroundPermissionsAsync();
@@ -52,11 +83,18 @@ const HomeTab = () => {
 
     const json = await response.json();
 
-    //console.log(json);
+    console.log(json)
+    console.log(json.current)
+    setTw(json)
 
-    setWeather(json);
+    console.log(tw)
 
-    //console.log(weather);
+    setRw(tw.current.weather[0].main)
+
+    //setRw(tw.current.weather[0].main);
+    
+    //console.log();
+
 
     return setLoading(false);
   };
@@ -103,7 +141,8 @@ const HomeTab = () => {
         <Text style = {styles.etcTxt}>오늘의 추천</Text>
         <View style = {styles.line} />
         <View style ={styles.localView}>
-          <Text style = {styles.etcTxt}>{weather.current.temp}°C</Text>
+          <Icon name={getIconName(rw)} size={20} color="black" />
+          <Text style = {styles.etcTxt}>{tw.current.temp}°C</Text>
           <Text style = {styles.etcTxt}>{city}</Text>
         </View>
       </View>
