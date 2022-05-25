@@ -37,6 +37,7 @@
     "react-native-tab-view": "^3.1.1",
     "react-native-view-overflow": "^0.0.5",
     "react-native-web": "0.17.1",
+    "react-spring-bottom-sheet": "^3.4.0",
     "rn-bottom-drawer": "^1.4.3",
     "rn-sliding-up-panel": "^2.4.5"
   },

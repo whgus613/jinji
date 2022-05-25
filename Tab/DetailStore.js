@@ -3,36 +3,40 @@ import { StyleSheet, Text, View, Linking, TouchableOpacity, Image, ScrollView } 
 import { AntDesign } from '@expo/vector-icons';
 
 
-const DetailStore = () => {
+const DetailStore = ({route}) => {
+
+  const {
+    params: {contents, data}
+  } = route;
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <View style={styles.imageView}>
           <Image
             resizeMode={"cover"}
-            source={require("../sampleImg/새벽.jpg")}
+            source={{
+              uri: `http://203.253.207.111:8080/jsmith_image${contents.ccnt_m_img[0]}`
+            }}
             style={styles.imageStyle}></Image>
         </View>
         <View style={styles.titleView}>
-          <Text style={styles.title}>새벽</Text>
+          <Text style={styles.title}>{contents.ccnt_name}</Text>
         </View>
         <View style={styles.etcView}>
           <View style={styles.stateView}>
-            <Text style={styles.stateTxt}>영업 종료</Text>
-            <Text style={styles.etcTxt}>매일 10:30~21:30</Text>
-            <Text style={styles.etcTxt}>제주 제주시 산천단동 2길 24</Text>
-            <Text style={styles.etcTxt}>064-1234-5678</Text>
+            <Text style={styles.etcTxt}>{contents.ccnt_op_time}</Text>
+            <Text style={styles.etcTxt}>{contents.ccnt_addr}</Text>
+            <Text style={styles.etcTxt}>{contents.ccnt_tel}</Text>
           </View>
-          <View style={styles.distView}>
+          {/*<View style={styles.distView}>
             <Text style={styles.distTxt}>1.7km</Text>
-          </View>
+          </View>*/}
         </View>
         <View style={styles.line}></View>
         <View style={styles.linkView}>
           <Text style={styles.etcTxt}>상세정보</Text>
-          <TouchableOpacity onPress={() => Linking.openURL("https://www.instagram.com/theseoyu001")}>
-          <Text style={styles.linkTxt}>www.instagram.com/theseoyu001</Text>
-          </TouchableOpacity>
+          <Text style={styles.linkTxt}>{contents.ccnt_rcmd_comt}</Text>
         </View>
         <View style={styles.line}></View>
         <View style={styles.starpointView}>
@@ -131,7 +135,8 @@ const styles = StyleSheet.create({
     color: '#C7382A'
   },
   etcTxt: {
-    fontSize: 18
+    fontSize: 18,
+    marginBottom: 7
   },
   distView: {
 
@@ -146,13 +151,15 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   linkView: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%'
+    //flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 20
   },
   linkTxt: {
-    color: '#69B1DA',
-    fontSize: 14
+    color: 'black',
+    fontSize: 16,
+    marginTop: 10
   },
   starpointView: {
     flexDirection: 'row',

@@ -29,7 +29,7 @@ const Menu = ({navigation}) => {
         for (let i=0; i<preData.length; i++){
             contents[i]=preData[i]; 
             contents[i].ccnt_m_img = contents[i].ccnt_m_img.split(",");
-            contents[i].ccnt_addr = contents[i].ccnt_addr.substr(8);
+            //contents[i].ccnt_addr = contents[i].ccnt_addr.substr(8);
         }
 
         setWholeData(contents);
@@ -65,7 +65,13 @@ const Menu = ({navigation}) => {
         
         {wholeData.map((image)=>{
           return(
-            <TouchableOpacity  key={image.ROWNUM}>
+            <TouchableOpacity
+              key={image.ROWNUM}
+              onPress={() => navigation.navigate("DetailStore", {
+                contents: image,
+                data: wholeData
+              })}  
+            >
             <View style={styles.storeView}>
               <View style={styles.imageView}>
               <Image
@@ -146,7 +152,7 @@ const styles = StyleSheet.create({
   storeView: {
     flexDirection: 'row',
     marginBottom: 30,
-    marginTop: 10
+    marginTop: 10,
   },
   imageView: {
     marginRight: 10
@@ -157,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   txtView: {
-    
+    flexShrink: 1
   },
   nameTxt: {
     fontSize: 20,
@@ -168,10 +174,10 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   etcTxt: {
-    marginVertical: 1
+    marginVertical: 1,
   },
   gapView: {
-    height: 20
+    height: 5
   },
   buttonView: {
     position: 'absolute',
