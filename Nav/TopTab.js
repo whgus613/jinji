@@ -6,6 +6,7 @@ import HomeTab from "../Tab/HomeTab";
 import ListTab from "../Tab/ListTab";
 import MyTab from "../Tab/MyTab";
 import HomeSample from "../Tab/HomeSample";
+import SearchSample from "../Tab/SearchSample";
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
@@ -31,7 +32,7 @@ const TopTab = ({route}) => {
             >
             <Tab.Screen
                 name = "검색"
-                component={SearchTab}
+                component={SearchSample}
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
@@ -51,7 +52,7 @@ const TopTab = ({route}) => {
             />
             <Tab.Screen
                 name = "홈"
-                component={HomeTab}
+                component={HomeSample}
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
