@@ -2,10 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import react, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
 
-const Menu = ({navigation}) => {
+const MenuSearch = ({navigation}) => {
 
   const [toggle, setToggle] = useState(true);
   const toggleFunction = () => {
@@ -22,9 +20,9 @@ const Menu = ({navigation}) => {
         const results = await(await fetch("http://203.253.207.111:8080/jsmith/restful/content?type=1&page=1&ccd=B2")).json();
         
         const preData = results.filter((data) => {
-          const code = data.ccnt_m_img;
-          return code !== ""; 
-      });
+            const code = data.ccnt_m_img;
+            return code !== ""; 
+        });
 
         for (let i=0; i<preData.length; i++){
             contents[i]=preData[i]; 
@@ -86,7 +84,20 @@ const Menu = ({navigation}) => {
                 <Text style={styles.etcTxt}>{image.ccnt_op_time}</Text>
                 <View style={styles.gapView}></View>
                 <Text style={styles.etcTxt}>{image.ccnt_addr}</Text>
-                <Text style={styles.etcTxt}>{image.ccnt_tel}</Text>
+                <View style = {{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
+                    <Text style={styles.etcTxt}>{image.ccnt_tel}</Text>
+                    <TouchableOpacity onPress={() => toggleFunction()}>
+                        {toggle ? (
+                            <View style={{marginRight: 11}}>
+                                <AntDesign name="hearto" size={24} color="#C7382A" />
+                            </View>
+                        ) : (
+                            <View style={{marginRight:11}}>
+                                <AntDesign name="heart" size={24} color="#C7382A" />
+                            </View>
+                        )}
+                    </TouchableOpacity>
+                </View>
               </View>
             </View>
           </TouchableOpacity>
@@ -96,36 +107,6 @@ const Menu = ({navigation}) => {
       </View>
 
       </ScrollView>
-
-
-
-      <View style={styles.buttonView}>
-        <TouchableOpacity onPress={() => toggleFunction()}>
-          {toggle ? (
-            <AntDesign name="pluscircle" size={45} color="#DA7469" style={styles.button1}/>
-          ) : (
-            <View style={styles.writeView}>
-              <View style={styles.selectView}>
-                <TouchableOpacity onPress={() => navigation.navigate("식당 리뷰하기")}>
-                  <View style={{flexDirection: 'row'}}>
-                  <Feather name="check" size={22} color="gray" style={{marginRight: 15}} />
-                  <Text style={styles.selectTxt}>방문한 곳 등록</Text>
-                  </View>
-                </TouchableOpacity>
-                
-                <View style={styles.line2}></View>
-                <TouchableOpacity onPress={() => navigation.navigate("식당 등록하기")}>
-                  <View style={{flexDirection: 'row'}}>
-                  <AntDesign name="hearto" size={22} color="gray" style={{marginRight: 15}} />
-                  <Text style={styles.selectTxt}>가고 싶은 곳 등록</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-              <Entypo name="circle-with-cross" size={50} color="#DA7469" style={styles.button2}/>
-            </View>
-          )}
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
@@ -135,13 +116,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 20,
-    paddingHorizontal: 5,
+    paddingHorizontal: 30,
     zIndex: 1
   },
   titleView: {
   },
   titleTxt: {
-    fontSize: 17
+    fontSize: 20
   },
   line: {
     backgroundColor: '#C3C3C3',
@@ -217,4 +198,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Menu;
+export default MenuSearch;

@@ -5,6 +5,7 @@ import FollowTab from "../Tab/FollowTab";
 import HomeTab from "../Tab/HomeTab";
 import ListTab from "../Tab/ListTab";
 import MyTab from "../Tab/MyTab";
+import HomeSample from "../Tab/HomeSample";
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';

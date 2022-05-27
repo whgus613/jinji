@@ -9,6 +9,11 @@ const FollowTab = ({navigation}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
 
+  const [toggle, setToggle] = useState(true);
+  const toggleFunction = () => {
+    setToggle(!toggle);
+  };
+
   return (
     <View style={styles.container}>
       <Searchbar
@@ -44,9 +49,17 @@ const FollowTab = ({navigation}) => {
           </View>
           <Text style={styles.word}>숨은 맛집 찾아다녀요~!</Text>
           <View style={styles.followView}>
-            <View style={styles.followTag}>
-              <Text style={styles.followTxt}>팔로우</Text>
-            </View>
+            <TouchableOpacity onPress={() => toggleFunction()}>
+              { toggle ? (
+                <View style={styles.followTag}>
+                  <Text style={styles.followTxt}>팔로우</Text>
+                </View>
+              ) : (
+                <View style={styles.rFollowTag}>
+                  <Text style={styles.rFollowTxt}>팔로우</Text>
+                </View>
+              )}
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -190,7 +203,21 @@ const styles = StyleSheet.create({
   },
   followTxt: {
     color: "white"
-  }
+  },
+  rFollowTag: {
+    paddingHorizontal: 10,
+    backgroundColor: "white",
+    marginRight: 5,
+    height: 25,
+    borderRadius: 20,
+    justifyContent: 'center',
+    marginBottom: 10,
+    borderColor: '#69B1DA',
+    borderWidth: 1
+  },
+  rFollowTxt: {
+    color: "#69B1DA"
+  },
 });
 
 export default FollowTab;

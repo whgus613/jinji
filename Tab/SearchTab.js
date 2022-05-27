@@ -161,6 +161,14 @@ const SearchTab = ({navigation}) => {
       </View>
       <View style = {styles.line}></View>
       <View style = {styles.chevronView}>
+        <Text style = {styles.title}>메뉴별 검색</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("MenuSearch")}>
+        <Entypo name="chevron-small-right" size={24} color="gray" />
+        </TouchableOpacity>
+      </View>
+      <View style = {styles.line}></View>
+      <View style = {styles.chevronView}>
         <Text style = {styles.title}>태그 검색</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("TagSearch")}>

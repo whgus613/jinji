@@ -8,6 +8,7 @@ import VisitReview from "../Tab/VisitReview";
 import NotVisitReview from "../Tab/NotVisitReview";
 import FindStore from "../Tab/FindStore";
 import PlusTag from "../Tab/PlusTag";
+import MenuSearch from "../Tab/MenuSearch";
 
 const ns = createNativeStackNavigator();
 
@@ -60,6 +61,11 @@ const Stack = () => {
             <ns.Screen
                 name = "PlusTag"
                 component={PlusTag}  
+                options={{headerTitleStyle: {color: "#FFF"}}}  
+            ></ns.Screen> 
+            <ns.Screen
+                name = "MenuSearch"
+                component={MenuSearch}  
                 options={{headerTitleStyle: {color: "#FFF"}}}  
             ></ns.Screen> 
         </ns.Navigator>
