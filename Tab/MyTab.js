@@ -18,8 +18,8 @@ const MyTab = () => {
           <View style = {styles.editView}>
             <Text style={styles.profileTxt}>쩝쩝박사</Text>
             <View style={styles.editTag}>
-              <AntDesign name="edit" size={15} color="#3D3D3D" />
-              <Text style={styles.editTxt}>수정</Text>
+              <AntDesign name="edit" size={12} color="#707070" />
+              <Text style={styles.editTxt}>계정정보수정</Text>
             </View>
           </View>
           <View style={styles.line}></View>

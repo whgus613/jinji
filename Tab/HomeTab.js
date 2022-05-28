@@ -107,7 +107,28 @@ const HomeTab = () => {
 
   return loading ? (
     <View style={{flex: 1}}>
-
+      <Searchbar
+        placeholder='식당명 검색'
+        onChangeText = {onChangeSearch}
+        value = {searchQuery}
+        style = {{
+          borderRadius: 20,
+          marginHorizontal: 30,
+          marginTop: 60,
+          width: 350,
+          zIndex: 10,
+          position: 'absolute'
+        }}
+      />
+    <MapView
+        style={styles.map}
+        provide={PROVIDER_GOOGLE}
+        region={{
+          latitude: 33.45608763624372,
+          longitude: 126.56158878351617,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.05
+        }}></MapView>
     </View>
   ) : (
     <View>

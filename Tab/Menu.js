@@ -35,6 +35,8 @@ const Menu = ({navigation}) => {
         setWholeData(contents);
         setLoading(false);
     };
+
+    
     useEffect(()=> {
         getContents();
     }, []);

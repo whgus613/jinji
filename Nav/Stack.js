@@ -33,7 +33,9 @@ const Stack = () => {
             <ns.Screen
                 name = "DetailStore"
                 component={DetailStore}  
-                options={{headerTitleStyle: {color: "#FFF"}}}  
+                options={{
+                    headerTitleStyle: {color: "#FFF"}
+                }}
             ></ns.Screen>  
             <ns.Screen
                 name = "식당 등록하기"
