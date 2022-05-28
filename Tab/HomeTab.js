@@ -83,17 +83,9 @@ const HomeTab = () => {
 
     const json = await response.json();
 
-    //console.log(json)
-    //console.log(json.current)
     setTw(json)
 
-    //console.log(tw)
-
     setRw(tw.current.weather[0].main)
-
-    //setRw(tw.current.weather[0].main);
-    
-    //console.log();
 
 
     return setLoading(false);

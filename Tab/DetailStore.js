@@ -1,9 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Linking, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import React from 'react';
 
 
-const DetailStore = ({route}) => {
+const DetailStore = ({route, navigation}) => {
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: ()=>
+        <View style={{flexDirection:"row"}}>
+          <TouchableOpacity>
+            <Entypo name="share" size={24} color="#707070" style={{marginRight: 10}} />
+          </TouchableOpacity>
+        </View>
+    });
+  }, []);
 
   const {
     params: {contents, data}
