@@ -83,11 +83,11 @@ const HomeTab = () => {
 
     const json = await response.json();
 
-    console.log(json)
-    console.log(json.current)
+    //console.log(json)
+    //console.log(json.current)
     setTw(json)
 
-    console.log(tw)
+    //console.log(tw)
 
     setRw(tw.current.weather[0].main)
 
@@ -102,7 +102,8 @@ const HomeTab = () => {
 
   useEffect(() => {
     getLocation();
-  }, []);
+  }, [tw]);
+  
 
   return loading ? (
     <View style={{flex: 1}}>
@@ -142,7 +143,7 @@ const HomeTab = () => {
         <View style = {styles.line} />
         <View style ={styles.localView}>
           <Icon name={getIconName(rw)} size={20} color="black" />
-          <Text style = {styles.etcTxt}>{tw.current.temp}°C</Text>
+          <Text style = {styles.etcTxt}>{(tw.current.temp).toString().substring(0, 2)}°C</Text>
           <Text style = {styles.etcTxt}>{city}</Text>
         </View>
       </View>

@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
     height: 5
   },
   buttonView: {
+    backgroundColor: '#fff',
     position: 'absolute',
     bottom: '5%',
     right: '2%',  

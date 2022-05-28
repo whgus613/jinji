@@ -52,7 +52,7 @@ const TopTab = ({route}) => {
             />
             <Tab.Screen
                 name = "홈"
-                component={HomeSample}
+                component={HomeTab}
                 options={{
                     tabBarIcon: ({focused}) => 
                         focused ? (
