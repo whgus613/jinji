@@ -94,7 +94,7 @@ const HomeTab = () => {
 
   useEffect(() => {
     getLocation();
-  }, [tw]);
+  }, []);
   
 
   return loading ? (
@@ -157,7 +157,7 @@ const HomeTab = () => {
         <View style ={styles.localView}>
           <Icon name={getIconName(rw)} size={20} color="black" />
           <Text style = {styles.etcTxt}>{(tw.current.temp).toString().substring(0, 2)}°C</Text>
-          <Text style = {styles.etcTxt}>{city}</Text>
+          <Text style = {styles.etcTxt}>{(city).toString()}</Text>
         </View>
       </View>
     </View>

@@ -7,6 +7,19 @@ import { AntDesign } from '@expo/vector-icons';
 
 const VisitReview = ({navigation}) => {
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: ()=>
+        <View>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <View style={styles.tag}>
+              <Text style={styles.tagTxt}>완료</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+    });
+  }, []);
+
   const [text, setText] = useState('');
 
   return (
@@ -96,7 +109,20 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     marginHorizontal: 20,
     width: '100%',
-  }
+  },
+  tag: {
+    paddingHorizontal: 10,
+    borderColor: "#DA7469",
+    borderWidth: 1,
+    marginRight: 5,
+    height: 27,
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  tagTxt: {
+    fontSize: 14,
+    color: "#DA7469"
+  },
 });
 
 export default VisitReview;

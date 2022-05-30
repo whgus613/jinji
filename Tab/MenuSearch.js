@@ -5,12 +5,6 @@ import { AntDesign } from '@expo/vector-icons';
 
 const MenuSearch = ({navigation}) => {
 
-  const [toggle, setToggle] = useState(true);
-  const toggleFunction = () => {
-    setToggle(!toggle);
-  };
-
-  
   const [loading, setLoading] = useState(true);
   const [wholeData, setWholeData] = useState([]);
 
@@ -33,11 +27,57 @@ const MenuSearch = ({navigation}) => {
         setWholeData(contents);
         setLoading(false);
     };
+
     useEffect(()=> {
         getContents();
     }, []);
 
+    const ListImage = ({ image }) => {
+      const [toggle, setToggle] = useState(true);
+      const toggleFunction = () => {
+        setToggle(!toggle);
+      };
 
+      return(
+        <TouchableOpacity
+          key={image.ROWNUM}
+          onPress={() => navigation.navigate("DetailStore", {
+            contents: image,
+            data: wholeData
+          })}  
+        >
+        <View style={styles.storeView}>
+          <View style={styles.imageView}>
+          <Image
+              resizeMode={"cover"}
+              source={{
+                uri: `http://203.253.207.111:8080/jsmith_image${image.ccnt_m_img[0]}`
+              }}
+              style={styles.imageStyle}></Image>
+          </View>
+          <View style={styles.txtView}>
+            <Text style={styles.nameTxt}>{image.ccnt_name}</Text>
+            <Text style={styles.etcTxt}>{image.ccnt_op_time}</Text>
+            <View style={styles.gapView}></View>
+            <Text style={styles.etcTxt}>{image.ccnt_addr}</Text>
+            <View style = {{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
+                <Text style={styles.etcTxt}>{image.ccnt_tel}</Text>
+                <TouchableOpacity onPress={() => toggleFunction()}>
+                  <View style={{ marginRight: 11 }}>
+                    <AntDesign
+                      name={toggle ? "hearto" : "heart"}
+                      size={24}
+                      color="#C7382A"
+                    />
+                  </View>
+                </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+      );
+    }
+  
 
   return loading ? (
   
@@ -62,48 +102,8 @@ const MenuSearch = ({navigation}) => {
       <View>
         
         {wholeData.map((image)=>{
-          return(
-            <TouchableOpacity
-              key={image.ROWNUM}
-              onPress={() => navigation.navigate("DetailStore", {
-                contents: image,
-                data: wholeData
-              })}  
-            >
-            <View style={styles.storeView}>
-              <View style={styles.imageView}>
-              <Image
-                  resizeMode={"cover"}
-                  source={{
-                    uri: `http://203.253.207.111:8080/jsmith_image${image.ccnt_m_img[0]}`
-                  }}
-                  style={styles.imageStyle}></Image>
-              </View>
-              <View style={styles.txtView}>
-                <Text style={styles.nameTxt}>{image.ccnt_name}</Text>
-                <Text style={styles.etcTxt}>{image.ccnt_op_time}</Text>
-                <View style={styles.gapView}></View>
-                <Text style={styles.etcTxt}>{image.ccnt_addr}</Text>
-                <View style = {{flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-                    <Text style={styles.etcTxt}>{image.ccnt_tel}</Text>
-                    <TouchableOpacity onPress={() => toggleFunction()}>
-                        {toggle ? (
-                            <View style={{marginRight: 11}}>
-                                <AntDesign name="hearto" size={24} color="#C7382A" />
-                            </View>
-                        ) : (
-                            <View style={{marginRight:11}}>
-                                <AntDesign name="heart" size={24} color="#C7382A" />
-                            </View>
-                        )}
-                    </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-          );
+          return <ListImage key={image.ROWNUM} image={image} />
         })}
-
       </View>
 
       </ScrollView>

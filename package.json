@@ -27,6 +27,7 @@
     "react-native-bottomsheet-reanimated": "^0.2.0",
     "react-native-dynamic-search-bar": "^2.0.2",
     "react-native-elements": "^3.4.2",
+    "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-image-picker": "^4.8.3",
     "react-native-maps": "^0.31.1",
@@ -45,9 +46,11 @@
     "react-native-view-overflow": "^0.0.5",
     "react-native-web": "0.17.1",
     "react-native-xml2js": "^1.0.3",
+    "react-spreadsheet": "^0.7.4",
     "react-spring-bottom-sheet": "^3.4.0",
     "rn-bottom-drawer": "^1.4.3",
-    "rn-sliding-up-panel": "^2.4.5"
+    "rn-sliding-up-panel": "^2.4.5",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
